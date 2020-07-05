@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -9,8 +9,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import * as serviceWorker from "./serviceWorker";
 
 import "./index.css";
-import AppRoutes from "./routes";
+import { authenticatedRoutes, publicRoutes } from "./routes";
 import store from "./redux/store";
+import { PrivateRoute } from "./components/common/privateRoute";
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -27,8 +28,17 @@ ReactDOM.render(
       <Provider store={store}>
         <Router>
           <Switch>
-            {AppRoutes.map((route) => (
+            {publicRoutes.map((route) => (
               <Route
+                key={route.key}
+                path={route.path}
+                exact={route.exact}
+                children={<route.main />}
+              />
+            ))}
+
+            {authenticatedRoutes.map((route) => (
+              <PrivateRoute
                 key={route.key}
                 path={route.path}
                 exact={route.exact}

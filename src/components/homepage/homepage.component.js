@@ -8,7 +8,7 @@ export default function Homepage(props) {
     let history = useHistory();
 
     useEffect(() => {
-       history.push('/login')
+       // history.push('/login')
     }, []);
 
     return (

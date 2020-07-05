@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { Button, TextField, CssBaseline } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,10 +13,17 @@ import { login } from "../../redux/actions";
 
 export default function Login() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const state = useSelector(({ auth }) => auth);
+
+  useEffect(() => {
+    if (state.accessToken.length > 0) {
+      history.push("/");
+    }
+  }, [state.accessToken]);
 
   function onSubmit(event) {
     event.preventDefault();

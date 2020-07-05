@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Button, TextField, CssBaseline } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,10 +10,12 @@ import "./login.styles.css";
 
 import { login } from "../../redux/actions";
 
-export default function Login(props) {
+export default function Login() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const state = useSelector(({ auth }) => auth);
 
   function onSubmit(event) {
     event.preventDefault();

@@ -2,26 +2,40 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import "./homepage.styles.css";
-import { Accordion } from "@material-ui/core";
+import { Container, makeStyles } from "@material-ui/core";
 
 import { AppHeader } from "../common";
 import YearPreview from "./yearPreview/yearpreview.component";
 
 export default function Homepage(props) {
-  let history = useHistory();
+ const DEFAULT_EXPANDED_INDEX = 0;
+ let history = useHistory();
 
-  useEffect(() => {
-    // history.push('/login')
-  }, []);
+ useEffect(() => {
+  fetchYearPreviewData();
+ }, []);
 
-  return (
-    <>
-      <AppHeader />
-      <div style={{ height: "80vh", overflowY: "auto" }}>
-        {Array.of(1, 2, 3).map((item) => (
-          <YearPreview />
-        ))}
-      </div>
-    </>
-  );
+ function fetchYearPreviewData() {
+  // TODO: fill
+ }
+
+ const classes = useStyle();
+
+ return (
+  <>
+   <AppHeader />
+   <Container className={classes.container} maxWidth="xl">
+    {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
+     <YearPreview title={item} expanded={index === DEFAULT_EXPANDED_INDEX} />
+    ))}
+   </Container>
+  </>
+ );
 }
+
+const useStyle = makeStyles((theme) => ({
+ container: {
+  overflowY: "auto",
+  height: "85vh",
+ },
+}));

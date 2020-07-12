@@ -34,7 +34,7 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-    <div className="footprint-login-background">
+    <div className="footprint-login-container">
       <div className="login-form-container">
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(4),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {

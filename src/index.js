@@ -11,18 +11,15 @@ import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import { authenticatedRoutes, publicRoutes } from "./routes";
 import store from "./redux/store";
-import { PrivateRoute } from "./components/common/privateRoute";
+import { PrivateRoute } from "./components/common";
 
 const darkTheme = createMuiTheme({
   palette: {
-    type: "dark",
-    primary: {
-      main: "#1d1a1a96",
-    },
+    type: "dark"
   },
 });
 
-ReactDOM.render(
+ReactDOM.render(  
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <Provider store={store}>

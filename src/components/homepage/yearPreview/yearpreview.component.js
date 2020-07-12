@@ -20,7 +20,7 @@ export default function YearPreview(props) {
     aria-controls="panel1a-content"
     id="panel1a-header"
    >
-    <Typography>Accordion 1</Typography>
+    <Typography> {props.title} </Typography>
    </AccordionSummary>
    <AccordionDetails>
     <SingleLineImageGrid />
@@ -35,51 +35,3 @@ const useStyles = makeStyles((theme) => ({
   borderStyle: "1px solid #fff",
  },
 }));
-
-/* <div style={{ marginTop: "5rem" }}>
-        <span
-          style={{
-            width: "30%",
-            display: "inline-block",
-            backgroundColor: "silver",
-            height: "15px",
-          }}
-        ></span>
-        <Divider component='span'> </Divider>
-        <span style={{ margin: "1rem" }}>YEAR</span>
-        <span style={{ margin: "1rem" }}>MONTH</span>
-        <span
-          style={{
-            width: "30%",
-            display: "inline-block",
-            backgroundColor: "silver",
-            height: "15px",
-          }}
-        ></span>
-      </div>
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            height: "250px",
-            width: "250px",
-            backgroundColor: "blue",
-            margin: "1rem",
-          }}
-        ></div>
-        <div
-          style={{
-            height: "250px",
-            width: "250px",
-            backgroundColor: "blue",
-            margin: "1rem",
-          }}
-        ></div>
-        <div
-          style={{
-            height: "250px",
-            width: "250px",
-            backgroundColor: "blue",
-            margin: "1rem",
-          }}
-        ></div>
-      </div> */

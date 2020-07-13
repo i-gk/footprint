@@ -1,17 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-import './homepage.styles.css'
-import { useHistory } from 'react-router-dom';
+import "./homepage.styles.css";
+import { Container, makeStyles } from "@material-ui/core";
+
+import { AppHeader } from "../common";
+import YearPreview from "./yearPreview/yearpreview.component";
 
 export default function Homepage(props) {
+ const DEFAULT_EXPANDED_INDEX = 0;
+ let history = useHistory();
 
-    let history = useHistory();
+ useEffect(() => {
+  fetchYearPreviewData();
+ }, []);
 
-    useEffect(() => {
-       // history.push('/login')
-    }, []);
+ function fetchYearPreviewData() {
+  // TODO: fill
+ }
 
-    return (
-        <h3>Homepage</h3>
-    )
+ const classes = useStyle();
+
+ return (
+  <>
+   <AppHeader />
+   <Container className={classes.container} maxWidth="xl">
+    {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
+     <YearPreview title={item} expanded={index === DEFAULT_EXPANDED_INDEX} />
+    ))}
+   </Container>
+  </>
+ );
 }
+
+const useStyle = makeStyles((theme) => ({
+ container: {
+  overflowY: "auto",
+  height: "85vh",
+ },
+}));

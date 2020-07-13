@@ -1,6 +1,13 @@
 import { createStore, applyMiddleware } from "redux";
-import thunk from 'redux-thunk';
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 
-import rootReducer from "./reducers"
+import rootReducer from "./reducers";
 
-export default createStore(rootReducer, applyMiddleware(thunk));
+let middleware = applyMiddleware(thunk);
+
+if (process.env.NODE_ENV !== "production") {
+  middleware = composeWithDevTools(middleware);
+}
+
+export default createStore(rootReducer, middleware);

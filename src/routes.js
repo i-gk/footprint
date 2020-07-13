@@ -1,6 +1,6 @@
 import React from 'react';
-import { Homepage } from './components/homepage';
-import { Login } from './components/login';
+import Homepage from './components/homepage/homepage.component';
+import Login from './components/login/login.component';
 
 export const authenticatedRoutes = [
     {

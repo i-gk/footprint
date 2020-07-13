@@ -4,9 +4,12 @@ import { useSelector } from "react-redux";
 
 export default function PrivateRoute({ children, ...rest }) {
   
-  const isLoggedIn = useSelector(({auth}) => {
+  /* const isLoggedIn = useSelector(({auth}) => {
       return (auth.accessToken.length > 0)
-  });
+  }); */
+
+  // TODO: Just for dev purposes
+  const isLoggedIn = true;
 
   return (
     <Route

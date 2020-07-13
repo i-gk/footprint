@@ -26,7 +26,11 @@ export default function Homepage(props) {
    <AppHeader />
    <Container className={classes.container} maxWidth="xl">
     {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
-     <YearPreview title={item} expanded={index === DEFAULT_EXPANDED_INDEX} />
+     <YearPreview
+      key={item}
+      title={item}
+      expanded={index === DEFAULT_EXPANDED_INDEX}
+     />
     ))}
    </Container>
   </>

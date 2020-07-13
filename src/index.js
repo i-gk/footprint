@@ -13,8 +13,8 @@ import App from "./components/app/app.component";
 
 ReactDOM.render(
  <React.StrictMode>
-  <App>
-   <Provider store={store}>
+  <Provider store={store}>
+   <App>
     <Router>
      <Switch>
       {publicRoutes.map((route) => (
@@ -36,8 +36,8 @@ ReactDOM.render(
       ))}
      </Switch>
     </Router>
-   </Provider>
-  </App>
+   </App>
+  </Provider>
  </React.StrictMode>,
  document.getElementById("root")
 );

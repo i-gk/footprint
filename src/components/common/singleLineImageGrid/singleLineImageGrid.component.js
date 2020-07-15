@@ -8,7 +8,7 @@ export default function SingleLineImageGrid(props) {
  const classes = useStyles();
 
  return (
-  <div className={classes.root}>
+  <div data-testid="single-line-image-grid" className={classes.root}>
    <GridList className={classes.gridList} cols={3.5}>
     {tileData.map((tile) => (
      <GridListTile className={classes.tile} key={tile.img}>

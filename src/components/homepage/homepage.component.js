@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./homepage.styles.css";
 import { Container, makeStyles } from "@material-ui/core";
 
-import { AppHeader } from "../common";
+import { AppHeaderContainer } from "../common";
 import YearPreview from "./yearPreview/yearpreview.component";
 
 export default function Homepage(props) {
@@ -23,7 +23,7 @@ export default function Homepage(props) {
 
  return (
   <>
-   <AppHeader />
+   <AppHeaderContainer />
    <Container className={classes.container} maxWidth="xl">
     {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
      <YearPreview

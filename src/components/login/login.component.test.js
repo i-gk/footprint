@@ -13,7 +13,10 @@ import Login from "./login.component";
 const ReduxProvider = ({ children, reduxStore }) => (
  <Provider store={reduxStore}>{children}</Provider>
 );
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, {
+ // empty access token to avoid redirecting
+ auth: { accessToken: "" },
+});
 
 afterEach(cleanup);
 describe("Login Component", () => {

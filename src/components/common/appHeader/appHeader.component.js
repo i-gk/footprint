@@ -11,7 +11,7 @@ export default function AppHeader(props) {
  const classes = useStyles();
 
  return (
-  <AppBar color="transparent" position="static">
+  <AppBar id="footprint-appheader" color="transparent" position="static">
    <Toolbar>
     <Typography className={classes.title} variant="h6" noWrap>
      App Logo

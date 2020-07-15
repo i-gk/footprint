@@ -24,7 +24,11 @@ export default function Homepage(props) {
  return (
   <>
    <AppHeaderContainer />
-   <Container className={classes.container} maxWidth="xl">
+   <Container
+    id="footprint-homepage"
+    className={classes.container}
+    maxWidth="xl"
+   >
     {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
      <YearPreview
       key={item}

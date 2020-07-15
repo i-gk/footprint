@@ -1,7 +1,8 @@
 import { DO_LOGIN } from "../actions";
 
 const INITIAL_STATE = {
- accessToken: "",
+ // TODO: Just for dev purposes. Should be fetched from local storage
+ accessToken: "123",
 };
 
 export default function AuthReducer(state = INITIAL_STATE, action) {

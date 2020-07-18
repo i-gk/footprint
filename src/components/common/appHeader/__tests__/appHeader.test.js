@@ -1,16 +1,49 @@
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup, getByText } from "@testing-library/react";
 
-import AppHeaderContainer from "./appHeader.container.component";
-import AppHeader from "./appHeader.component";
+import AppHeaderContainer from "../appHeader.container.component";
+import AppHeader from "../appHeader.component";
+import { Provider } from "react-redux";
+import createMockStore from "redux-mock-store";
+
+import debounce from "lodash/debounce";
+// jest to mock this import
+jest.mock("lodash/debounce");
 
 afterEach(cleanup);
 
+const ReduxProvider = ({ store, children }) => (
+ <Provider store={store}>{children}</Provider>
+);
+const store = createMockStore();
+
 describe("App Header Container", () => {
  it("should render without crashing", () => {
-  const { getByPlaceholderText } = render(<AppHeaderContainer />);
+  const mockStore = store({});
+  const { getByPlaceholderText } = render(
+   <ReduxProvider store={mockStore}>
+    <AppHeaderContainer />
+   </ReduxProvider>
+  );
 
   expect(getByPlaceholderText("Search…")).toBeVisible();
+ });
+
+ it("should execute search strategy when user search something", () => {
+  const mockSearchStrategy = jest.fn();
+  debounce.mockImplementation((fn) => fn);
+
+  const mockStore = store({});
+  const { getByPlaceholderText } = render(
+   <ReduxProvider store={mockStore}>
+    <AppHeaderContainer searchStrategy={mockSearchStrategy} />
+   </ReduxProvider>
+  );
+  const searchBox = getByPlaceholderText("Search…");
+  const query = "2020";
+
+  fireEvent.change(searchBox, { target: { value: query } });
+  expect(mockSearchStrategy).toHaveBeenCalledTimes(1);
  });
 });
 

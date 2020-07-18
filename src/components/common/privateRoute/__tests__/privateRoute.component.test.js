@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { Route, MemoryRouter, Switch } from "react-router-dom";
 import configureMockStore from "redux-mock-store";
 
-import PrivateRoute from "./privateRoute.component";
+import PrivateRoute from "../privateRoute.component";
 
 const mockStore = configureMockStore();
 const ReduxProvider = ({ children, reduxStore }) => (

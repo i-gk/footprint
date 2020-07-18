@@ -3,8 +3,8 @@ import { render, cleanup } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-import rootReducer from "../../redux/reducers";
-import App from "./app.component";
+import rootReducer from "../../../redux/reducers";
+import App from "../app.component";
 
 const ReduxProvider = ({ children, reduxStore }) => (
  <Provider store={reduxStore}>{children}</Provider>

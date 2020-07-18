@@ -21,15 +21,17 @@ export default function AppHeader(props) {
      <div className={classes.searchIcon}>
       <SearchIcon />
      </div>
-     <InputBase
-      placeholder="Search…"
-      onChange={({ target }) => props.onSearch(target.value)}
-      classes={{
-       root: classes.inputRoot,
-       input: classes.inputInput,
-      }}
-      inputProps={{ "aria-label": "search" }}
-     />
+     {props.searchEnabled && (
+      <InputBase
+       placeholder="Search…"
+       onChange={({ target }) => props.onSearch(target.value)}
+       classes={{
+        root: classes.inputRoot,
+        input: classes.inputInput,
+       }}
+       inputProps={{ "aria-label": "search" }}
+      />
+     )}
     </div>
     <PersonSharpIcon
      data-testid="profile-icon"

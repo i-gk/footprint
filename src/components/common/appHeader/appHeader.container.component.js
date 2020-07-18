@@ -18,10 +18,15 @@ export default function AppHeaderContainer(props) {
   props.searchStrategy(value);
  }, DEBOUNCE_TIME_FOR_SEARCH);
 
+ const isSearchEnabled = () => {
+  return props.searchStrategy !== undefined;
+ };
+
  return (
   <AppHeader
    onLogout={onLogoutIconClick}
    onProfileSelect={onProfileIconClick}
+   searchEnabled={isSearchEnabled()}
    onSearch={search}
   />
  );

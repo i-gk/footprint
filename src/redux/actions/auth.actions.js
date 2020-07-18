@@ -1,4 +1,4 @@
-import { DO_LOGIN } from "./actionTypes";
+import { DO_LOGIN } from "./";
 import { showLoader, hideLoader } from "./uicontrols.actions";
 
 export function login({ email, password }) {

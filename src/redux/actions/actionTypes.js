@@ -1,3 +1,5 @@
 export const DO_LOGIN = "LOGIN";
 export const SHOW_LOADER = "SHOW_LOADER";
 export const HIDE_LOADER = "HIDE_LOADER";
+
+export const FETCH_MEMORIES_SUCCESS = "FETCH_MEMORIES_SUCCESS";

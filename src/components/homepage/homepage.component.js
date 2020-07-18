@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import "./homepage.styles.css";
 import { Container, makeStyles } from "@material-ui/core";
@@ -7,9 +7,12 @@ import { Container, makeStyles } from "@material-ui/core";
 import { AppHeaderContainer } from "../common";
 import YearPreview from "./yearPreview/yearpreview.component";
 
+import { searchByMemoryDetails } from "../../redux/selectors";
+
 export default function Homepage(props) {
  const DEFAULT_EXPANDED_INDEX = 0;
- let history = useHistory();
+ const { previews } = useSelector(({ memories }) => memories);
+ const [yearPreviews, setYearPreviews] = useState(previews);
 
  useEffect(() => {
   fetchYearPreviewData();
@@ -19,20 +22,23 @@ export default function Homepage(props) {
   // TODO: fill
  }
 
+ function searchMemories(value) {
+  setYearPreviews(searchByMemoryDetails(previews, value));
+ }
+
  const classes = useStyle();
 
  return (
   <>
-   <AppHeaderContainer />
+   <AppHeaderContainer searchStrategy={searchMemories} />
    <Container
     id="footprint-homepage"
     className={classes.container}
     maxWidth="xl"
    >
-    {Array.of(2020, 2019, 2018, 2017).map((item, index) => (
+    {yearPreviews.map((item, index) => (
      <YearPreview
-      key={item}
-      title={item}
+      previewDetails={item}
       expanded={index === DEFAULT_EXPANDED_INDEX}
      />
     ))}

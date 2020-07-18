@@ -1,8 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import debounce from "lodash/debounce";
 
 import AppHeader from "./appHeader.component";
 
-export default () => {
+export default function AppHeaderContainer(props) {
+ const DEBOUNCE_TIME_FOR_SEARCH = 500;
+
+ const { previews } = useSelector(({ memories }) => memories);
+
  function onProfileIconClick() {
   console.log("profile!");
  }
@@ -11,9 +17,9 @@ export default () => {
   console.log("logout!");
  }
 
- function search(value) {
-  console.log("searching for: ", value);
- }
+ const search = debounce(function (value) {
+  props.searchStrategy(value);
+ }, DEBOUNCE_TIME_FOR_SEARCH);
 
  return (
   <AppHeader
@@ -22,4 +28,4 @@ export default () => {
    onSearch={search}
   />
  );
-};
+}

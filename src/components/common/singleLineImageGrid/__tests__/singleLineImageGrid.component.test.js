@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup, getByText } from "@testing-library/react";
 
-import SingleLineImageGrid from "./singleLineImageGrid.component";
+import SingleLineImageGrid from "../singleLineImageGrid.component";
 
 afterEach(cleanup);
 

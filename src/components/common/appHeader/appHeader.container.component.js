@@ -1,8 +1,11 @@
 import React from "react";
+import debounce from "lodash/debounce";
 
 import AppHeader from "./appHeader.component";
 
-export default () => {
+export default function AppHeaderContainer(props) {
+ const DEBOUNCE_TIME_FOR_SEARCH = 500;
+
  function onProfileIconClick() {
   console.log("profile!");
  }
@@ -11,15 +14,20 @@ export default () => {
   console.log("logout!");
  }
 
- function search(value) {
-  console.log("searching for: ", value);
- }
+ const search = debounce(function (value) {
+  props.searchStrategy(value);
+ }, DEBOUNCE_TIME_FOR_SEARCH);
+
+ const isSearchEnabled = () => {
+  return props.searchStrategy !== undefined;
+ };
 
  return (
   <AppHeader
    onLogout={onLogoutIconClick}
    onProfileSelect={onProfileIconClick}
+   searchEnabled={isSearchEnabled()}
    onSearch={search}
   />
  );
-};
+}

@@ -7,8 +7,8 @@ import { Route, MemoryRouter } from "react-router-dom";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-import rootReducer from "../../redux/reducers";
-import Login from "./login.component";
+import rootReducer from "../../../redux/reducers";
+import Login from "../login.component";
 
 const ReduxProvider = ({ children, reduxStore }) => (
  <Provider store={reduxStore}>{children}</Provider>

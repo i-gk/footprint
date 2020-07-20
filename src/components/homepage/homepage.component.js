@@ -44,6 +44,7 @@ export default function Homepage(props) {
    >
     {yearPreviews.map((item, index) => (
      <YearPreview
+      key={`${item.year}-${item.title}`}
       previewDetails={item}
       expanded={index === DEFAULT_EXPANDED_INDEX}
      />

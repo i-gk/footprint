@@ -15,11 +15,7 @@ import { SingleLineImageGrid } from "../../common";
 export default function YearPreview({ previewDetails, expanded }) {
  const classes = useStyles();
  return (
-  <Accordion
-   key={`${previewDetails.year}-${previewDetails.title}`}
-   className={classes.root}
-   defaultExpanded={expanded}
-  >
+  <Accordion className={classes.root} defaultExpanded={expanded}>
    <AccordionSummary
     expandIcon={<ExpandMoreIcon />}
     aria-controls="panel1a-content"

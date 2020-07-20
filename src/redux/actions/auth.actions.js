@@ -1,28 +1,19 @@
 import { DO_LOGIN_SUCCESS } from "./";
 import { showLoader, hideLoader } from "./uicontrols.actions";
-import { makePOST } from "../../services/httpcore.service";
+import { performLogin } from "../../services/user.service";
 
 export function login({ email, password }) {
  return doLogin(email, password);
 }
 
 function doLogin(email, password) {
- return (dispatch) => {
+ return async (dispatch) => {
   dispatch(showLoader());
-
-  return makePOST(
-   "/user/auth/login",
-   {
-    email,
-    password,
-   },
-   true
-  ).then(({ data }) => {
-   dispatch(hideLoader());
-   dispatch({
-    type: DO_LOGIN_SUCCESS,
-    payload: data,
-   });
+  const authData = await performLogin({ email, password });
+  dispatch(hideLoader());
+  dispatch({
+   type: DO_LOGIN_SUCCESS,
+   payload: authData,
   });
  };
 }

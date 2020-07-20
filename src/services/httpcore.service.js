@@ -1,7 +1,8 @@
 import axios from "axios";
+import AppConfig from "../configs/app.configs";
 
-const FOOTPRINT_SERVER = "http://localhost:8000/api/v1";
-const API_TIMEOUT = 3000;
+const FOOTPRINT_SERVER = AppConfig.baseUrl;
+const API_TIMEOUT = AppConfig.timeout;
 
 const http = axios.create({
  baseURL: FOOTPRINT_SERVER,

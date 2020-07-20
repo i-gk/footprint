@@ -8,7 +8,7 @@ const http = axios.create({
  timeout: API_TIMEOUT,
 });
 
-export function makeGET(api, { urlParams, headers }, isPublicApi = false) {
+export function makeGET(api, { urlParams, headers } = {}, isPublicApi = false) {
  const defaultAppHeaders = isPublicApi ? baseHeaders() : defaultHeaders();
 
  return http.get(api, {
@@ -23,7 +23,7 @@ export function makeGET(api, { urlParams, headers }, isPublicApi = false) {
 export function makePOST(
  api,
  data,
- { urlParams, headers },
+ { urlParams, headers } = {},
  isPublicApi = false
 ) {
  const defaultAppHeaders = isPublicApi ? baseHeaders() : defaultHeaders();
@@ -39,7 +39,7 @@ export function makePOST(
 export function makePUT(
  api,
  data,
- { urlParams, headers },
+ { urlParams, headers } = {},
  isPublicApi = false
 ) {
  const defaultAppHeaders = isPublicApi ? baseHeaders() : defaultHeaders();
@@ -53,7 +53,11 @@ export function makePUT(
  });
 }
 
-export function makeDELETE(api, { urlParams, headers }, isPublicApi = false) {
+export function makeDELETE(
+ api,
+ { urlParams, headers } = {},
+ isPublicApi = false
+) {
  const defaultAppHeaders = isPublicApi ? baseHeaders() : defaultHeaders();
 
  return http.delete(api, {

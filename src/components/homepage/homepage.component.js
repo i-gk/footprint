@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./homepage.styles.css";
 import { Container, makeStyles } from "@material-ui/core";
@@ -8,9 +8,13 @@ import { AppHeaderContainer } from "../common";
 import YearPreview from "./yearPreview/yearpreview.component";
 
 import { searchByMemoryDetails } from "../../redux/selectors";
+import { getMemories } from "../../redux/actions/memories.actions";
 
 export default function Homepage(props) {
  const DEFAULT_EXPANDED_INDEX = 0;
+ const classes = useStyle();
+
+ const dispatch = useDispatch();
  const { previews } = useSelector(({ memories }) => memories);
  const [yearPreviews, setYearPreviews] = useState(previews);
 
@@ -18,15 +22,17 @@ export default function Homepage(props) {
   fetchYearPreviewData();
  }, []);
 
+ useEffect(() => {
+  setYearPreviews(previews);
+ }, [previews]);
+
  function fetchYearPreviewData() {
-  // TODO: fill
+  dispatch(getMemories());
  }
 
  function searchMemories(value) {
   setYearPreviews(searchByMemoryDetails(previews, value));
  }
-
- const classes = useStyle();
 
  return (
   <>
@@ -38,6 +44,7 @@ export default function Homepage(props) {
    >
     {yearPreviews.map((item, index) => (
      <YearPreview
+      key={`${item.year}-${item.title}`}
       previewDetails={item}
       expanded={index === DEFAULT_EXPANDED_INDEX}
      />

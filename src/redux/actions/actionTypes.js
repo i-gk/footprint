@@ -1,4 +1,4 @@
-export const DO_LOGIN = "LOGIN";
+export const DO_LOGIN_SUCCESS = "DO_LOGIN_SUCCESS";
 export const SHOW_LOADER = "SHOW_LOADER";
 export const HIDE_LOADER = "HIDE_LOADER";
 

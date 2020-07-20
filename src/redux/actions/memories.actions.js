@@ -1,9 +1,10 @@
 import { FETCH_MEMORIES_SUCCESS } from "./";
+import { fetchMemories } from "../../services/memories.service";
 
 export const getMemories = () => {
  return async (dispatch) => {
-  const data = await mockFetchData();
-  dispatch(fetchMemoriesSuccess(data));
+  const previews = await fetchMemories();
+  dispatch(fetchMemoriesSuccess(previews));
  };
 };
 
@@ -12,9 +13,4 @@ function fetchMemoriesSuccess(payload) {
   type: FETCH_MEMORIES_SUCCESS,
   payload,
  };
-}
-
-// TODO: this will be from services in future
-function mockFetchData() {
- return [];
 }

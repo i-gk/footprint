@@ -1,6 +1,7 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import configureMockStore from "redux-mock-store";
+import thunk from "redux-thunk";
 
 import Homepage from "../homepage.component";
 import { Provider } from "react-redux";
@@ -10,7 +11,8 @@ afterEach(cleanup);
 const ReduxProvider = ({ children, store }) => (
  <Provider store={store}>{children}</Provider>
 );
-const store = configureMockStore();
+const middlewares = [thunk];
+const store = configureMockStore(middlewares);
 
 describe("Homepage Component", () => {
  it("Should render without crashing", () => {

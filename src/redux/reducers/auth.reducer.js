@@ -1,8 +1,11 @@
+import storage from "../../utils/storage.service";
 import { DO_LOGIN_SUCCESS } from "../actions";
+import { ACCESS_TOKEN_LOCAL_STORAGE_KEY } from "../../utils/appKeys/auth.keys";
+
+const currentAccessToken = storage.get(ACCESS_TOKEN_LOCAL_STORAGE_KEY) || "";
 
 const INITIAL_STATE = {
- // TODO: Just for dev purposes. Should be fetched from local storage
- accessToken: "",
+ accessToken: currentAccessToken,
 };
 
 export default function AuthReducer(state = INITIAL_STATE, action) {
